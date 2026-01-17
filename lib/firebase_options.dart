@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'crafty-bay-43c64.firebasestorage.app',
     measurementId: 'G-CT64HZ7G74',
   );
+
 }
