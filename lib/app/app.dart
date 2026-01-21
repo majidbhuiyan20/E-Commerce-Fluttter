@@ -1,6 +1,7 @@
 import 'package:crafty_bey/app/app_routes.dart';
 import 'package:crafty_bey/app/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../features/auth/presentation/screens/splash_screen.dart';
 
@@ -21,6 +22,18 @@ class _CraftyBeyAppState extends State<CraftyBayApp> {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.lightTheme,
       themeMode: .dark,
+      localizationsDelegates: [
+
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('bn') // Spanish
+      ],
+      locale: Locale('bn'),
 
 
     );
