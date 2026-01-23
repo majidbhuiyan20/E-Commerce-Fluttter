@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../features/auth/presentation/screens/splash_screen.dart';
+import '../l10n/app_localizations.dart';
 
 class CraftyBayApp extends StatefulWidget {
   const CraftyBayApp({super.key});
@@ -23,7 +24,7 @@ class _CraftyBeyAppState extends State<CraftyBayApp> {
       darkTheme: AppTheme.lightTheme,
       themeMode: .dark,
       localizationsDelegates: [
-
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
