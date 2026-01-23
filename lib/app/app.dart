@@ -32,7 +32,7 @@ class _CraftyBeyAppState extends State<CraftyBayApp> {
 
       supportedLocales: [
         Locale('en'), // English
-        Locale('bn') // Spanish
+        Locale('bn') // Bangla
       ],
       locale: Locale('bn'),
 
