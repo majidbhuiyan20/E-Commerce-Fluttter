@@ -1,3 +1,4 @@
 {
-  "hello" : "Hello, I am Majid Bhuiyan"
+  "hello" : "Hello",
+  "changeLanguage": "Change Language"
 }
