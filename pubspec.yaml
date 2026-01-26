@@ -17,12 +17,19 @@ dependencies:
   cloud_firestore: ^6.1.1
   firebase_crashlytics: ^5.0.6
   firebase_analytics: ^12.1.0
+  intl: any
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+flutter_localizations:
+  sdk: flutter
 
 
   flutter_lints: ^6.0.0
 flutter:
   uses-material-design: true
+  generate: true
