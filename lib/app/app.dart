@@ -20,35 +20,36 @@ class _CraftyBeyAppState extends State<CraftyBayApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LanguageProvider()),
+        ChangeNotifierProvider(create: (_) => LanguageProvider()..loadInitialLanguage()),
       ],
-      child: Consumer(
-        builder: (context, currentLocale, child) {
+      child: Consumer<LanguageProvider>(
+        builder: (context, languageProvider, child) {
           return MaterialApp(
-              debugShowCheckedModeBanner: false,
+            debugShowCheckedModeBanner: false,
             initialRoute: SplashScreen.routeName,
             onGenerateRoute: AppRoutes.routes,
             theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.lightTheme,
-            themeMode: .dark,
-            localizationsDelegates: [
+            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.dark,
+
+            localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
 
-            supportedLocales: [
-              Locale('en'), // English
-              Locale('bn') // Bangla
+            supportedLocales: const [
+              Locale('en'),
+              Locale('bn'),
+              Locale('de'),
             ],
-            locale: LanguageProvider().currentLocale,
 
-
+            locale: languageProvider.currentLocale,
           );
-        }
+        },
       ),
     );
-
   }
 }
+
