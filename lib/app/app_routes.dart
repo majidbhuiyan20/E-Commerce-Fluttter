@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../features/auth/presentation/screens/sign_in_screen.dart';
 import '../features/auth/presentation/screens/sign_up_screen.dart';
 import '../features/auth/presentation/screens/splash_screen.dart';
 class AppRoutes {
@@ -10,6 +11,9 @@ class AppRoutes {
     }
     else if(settings.name == SignUpScreen.routeName){
       widget = SignUpScreen();
+    }
+    else if(settings.name == SignInScreen.routeName){
+      widget = SignInScreen();
     }
 
     return MaterialPageRoute(builder: (ctx)=> widget);

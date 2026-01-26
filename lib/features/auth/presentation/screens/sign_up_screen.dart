@@ -1,4 +1,5 @@
 import 'package:crafty_bey/app/app_colors.dart';
+import 'package:crafty_bey/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:crafty_bey/features/auth/presentation/widgts/app_logo.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -112,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
 
                         text: 'Sign In',
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
                       ),
                     ],
                   ),
@@ -126,5 +127,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _onTapSignUpButton() {}
-  void _onTapSignInButton() {}
+  void _onTapSignInButton() {
+    Navigator.pushNamed(context, SignInScreen.routeName);
+  }
 }
