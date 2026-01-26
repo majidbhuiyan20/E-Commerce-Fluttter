@@ -1,6 +1,7 @@
 import 'package:crafty_bey/app/app_routes.dart';
 import 'package:crafty_bey/app/app_theme.dart';
 import 'package:crafty_bey/app/providers/language_provider.dart';
+import 'package:crafty_bey/app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -20,17 +21,23 @@ class _CraftyBeyAppState extends State<CraftyBayApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LanguageProvider()..loadInitialLanguage()),
+        ChangeNotifierProvider(
+          create: (_) => LanguageProvider()..loadInitialLanguage(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider()..loadInitialThemeMode(),
+        ),
       ],
-      child: Consumer<LanguageProvider>(
-        builder: (context, languageProvider, child) {
+      child: Consumer2<LanguageProvider, ThemeProvider>(
+        builder: (context, languageProvider, themeProvider, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             initialRoute: SplashScreen.routeName,
             onGenerateRoute: AppRoutes.routes,
+
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            themeMode: ThemeMode.dark,
+            themeMode: .light,
 
             localizationsDelegates: const [
               AppLocalizations.delegate,
@@ -52,4 +59,3 @@ class _CraftyBeyAppState extends State<CraftyBayApp> {
     );
   }
 }
-

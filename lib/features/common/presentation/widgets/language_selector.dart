@@ -4,6 +4,8 @@ import 'package:crafty_bey/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../app/providers/theme_provider.dart';
+
 class LanguageSelector extends StatefulWidget {
   const LanguageSelector({super.key});
 
@@ -40,9 +42,11 @@ class _LanguageSelectorState extends State<LanguageSelector> {
                   DropdownMenuEntry(value: 'en', label: "English"),
                   DropdownMenuEntry(value: 'bn', label: "Bangla"),
                   DropdownMenuEntry(value: 'de', label: "German"),
-                ])
+                ]),
               ],
             ),
+
+
           ],
         ),
       )
