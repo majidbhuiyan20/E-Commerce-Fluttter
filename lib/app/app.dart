@@ -27,6 +27,3 @@ class _CraftyBeyAppState extends State<CraftyBayApp> {
 
   }
 }
-
-
-//check
