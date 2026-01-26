@@ -1,3 +1,4 @@
+import 'package:crafty_bey/app/extensions/localization_extension.dart';
 import 'package:crafty_bey/app/providers/language_provider.dart';
 import 'package:crafty_bey/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _LanguageSelectorState extends State<LanguageSelector> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(AppLocalizations.of(context)!.hello),
+            Text(context.localizations.hello),
             SizedBox(height: 10,),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
