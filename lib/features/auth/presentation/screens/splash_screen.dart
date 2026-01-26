@@ -1,4 +1,5 @@
 import 'package:crafty_bey/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:crafty_bey/features/common/presentation/screens/main_nav_holder_screen.dart';
 import 'package:crafty_bey/features/common/presentation/widgets/language_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _moveToNextScreen() async{
     await Future.delayed(Duration(seconds: 2));
-    Navigator.pushNamedAndRemoveUntil(context, SignUpScreen.routeName, (predicate)=> false);
+    Navigator.pushNamedAndRemoveUntil(context, MainNavHolderScreen.routeName, (predicate)=> false);
   }
 
   @override
