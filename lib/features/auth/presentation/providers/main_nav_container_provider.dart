@@ -14,4 +14,8 @@ class MainNavContainerProvider extends ChangeNotifier{
   void changeToCategories(){
     changeItem(1);
   }
+
+  void backToHomeButton(){
+    changeItem(0);
+  }
 }

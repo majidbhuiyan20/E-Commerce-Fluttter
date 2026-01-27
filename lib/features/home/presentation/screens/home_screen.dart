@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:crafty_bey/app/constants.dart';
 import 'package:crafty_bey/features/auth/presentation/providers/main_nav_container_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,7 +37,37 @@ class _HomeScreenState extends State<HomeScreen> {
               SectionHeader(title: 'Categories', onTap: () {
                 context.read<MainNavContainerProvider>().changeToCategories();
               },),
-              _buildCategoryList()
+              _buildCategoryList(),
+
+              SectionHeader(title: 'Popular', onTap: () {
+              },),
+              
+              Card(
+                child: Column(
+                  children: [
+                    Container(),
+                    Text("Nike Shoe RG344 - New Arrival"),
+                    Row(
+                      children: [
+                        Text('${Constants.takaSign}1999'),
+                        Wrap(children: [
+                          Icon(Icons.star),
+                          Text('4.3')
+                          
+                        ],
+                        ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4)
+                          ),
+                            color: AppColors.themeColor,
+                          child: Icon(Icons.favorite_outline),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),
@@ -47,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // Bellow code is Category List View
   Widget _buildCategoryList() {
     return SizedBox(
-              height: 95,
+              height: 80,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                   itemCount: 10,
