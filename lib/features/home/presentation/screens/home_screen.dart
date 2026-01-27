@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:crafty_bey/features/auth/presentation/providers/main_nav_container_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../app/app_colors.dart';
 import '../../../../app/asset_paths.dart';
@@ -31,7 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 0,),
               ProductSearchField(),
               HomeCarouselSlider(),
-              SectionHeader(title: 'Categories', onTap: () {  },),
+              SectionHeader(title: 'Categories', onTap: () {
+                context.read<MainNavContainerProvider>().changeToCategories();
+              },),
               _buildCategoryList()
             ],
           ),
