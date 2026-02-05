@@ -1,11 +1,10 @@
 import 'package:crafty_bey/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:crafty_bey/features/auth/presentation/widgts/app_logo.dart';
 import 'package:crafty_bey/features/common/presentation/widgets/language_selector.dart';
+import 'package:crafty_bey/features/home/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../app/asset_paths.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../widgts/app_logo.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +16,6 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-
 class _SplashScreenState extends State<SplashScreen> {
 
   @override
@@ -27,27 +25,29 @@ class _SplashScreenState extends State<SplashScreen> {
     _moveToNextScreen();
   }
 
-  Future<void> _moveToNextScreen() async{
-    await Future.delayed(Duration(seconds: 2));
-    Navigator.pushNamedAndRemoveUntil(context, SignUpScreen.routeName, (predicate)=> false);
+  void _moveToNextScreen(){
+    Future.delayed(const Duration(seconds: 6), () {
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
+    });
   }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            Spacer(),
-              AppLogo(),
-            Spacer(),
-            CircularProgressIndicator(),
-            SizedBox(height: 20,),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Spacer(),
+          AppLogo(),
+          Spacer(),
+
+
+        ],
       ),
+
     );
   }
 }
-
