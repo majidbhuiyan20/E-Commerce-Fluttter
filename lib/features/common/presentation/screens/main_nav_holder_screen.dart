@@ -1,5 +1,6 @@
 import 'package:crafty_bey/app/app_colors.dart';
 import 'package:crafty_bey/features/common/presentation/provider/main_nav_container_provider.dart';
+import 'package:crafty_bey/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,16 +14,26 @@ class MainNavHolderScreen extends StatefulWidget {
 }
 
 class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
+
+  final List<Widget> _screens = [
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Consumer<MainNavContainerProvider>(
       builder: (context, mainNavContainerProvider, _) {
         return Scaffold(
+          body: _screens[mainNavContainerProvider.selectedIndex],
           bottomNavigationBar: BottomNavigationBar(
               unselectedItemColor: Colors.grey,
+              type: BottomNavigationBarType.fixed,
               selectedItemColor: AppColors.themeColor,
               currentIndex: mainNavContainerProvider.selectedIndex,
               onTap: mainNavContainerProvider.changeItem,
+              showSelectedLabels: true,
               items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(icon: Icon(Icons.dashboard_customize), label: "Categories"),

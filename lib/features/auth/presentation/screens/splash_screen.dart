@@ -1,7 +1,7 @@
 import 'package:crafty_bey/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bey/features/auth/presentation/widgts/app_logo.dart';
 import 'package:crafty_bey/features/common/presentation/widgets/language_selector.dart';
-import 'package:crafty_bey/features/home/home_screen.dart';
+import 'package:crafty_bey/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../l10n/app_localizations.dart';
