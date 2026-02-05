@@ -2,6 +2,7 @@ import 'package:crafty_bey/app/app_routes.dart';
 import 'package:crafty_bey/app/app_theme.dart';
 import 'package:crafty_bey/app/providers/language_provider.dart';
 import 'package:crafty_bey/app/providers/theme_provider.dart';
+import 'package:crafty_bey/features/common/presentation/provider/main_nav_container_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +27,8 @@ class _CraftyBeyAppState extends State<CraftyBayApp> {
         ),
         ChangeNotifierProvider(
           create: (_) => ThemeProvider()..loadInitialThemeMode(),
+        ),
+        ChangeNotifierProvider(create: (_)=> MainNavContainerProvider()
         ),
       ],
       child: Consumer2<LanguageProvider, ThemeProvider>(
