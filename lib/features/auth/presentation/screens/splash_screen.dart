@@ -5,6 +5,7 @@ import 'package:crafty_bey/features/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../l10n/app_localizations.dart';
+import '../../../common/presentation/screens/main_nav_holder_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -26,9 +27,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _moveToNextScreen(){
-    Future.delayed(const Duration(seconds: 6), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
-      Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
+      Navigator.pushReplacementNamed(context, MainNavHolderScreen.routeName);
     });
   }
 
@@ -36,16 +37,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Spacer(),
-          AppLogo(),
-          Spacer(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Spacer(),
+            AppLogo(),
+            Spacer(),
 
 
-        ],
+          ],
+        ),
       ),
 
     );
