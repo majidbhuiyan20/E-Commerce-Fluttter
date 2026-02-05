@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../app/asset_paths.dart';
 import '../widgets/circle_icon_button.dart';
+import '../widgets/product_search_field.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
           child: Column(
             children: [
+              SizedBox(height: 16,),
+              ProductSearchField()
 
             ],
           ),
