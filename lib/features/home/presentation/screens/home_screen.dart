@@ -1,10 +1,13 @@
+import 'package:crafty_bey/app/app_colors.dart';
 import 'package:crafty_bey/features/home/presentation/widgets/home_carousel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../app/asset_paths.dart';
+import '../widgets/category_card.dart';
 import '../widgets/circle_icon_button.dart';
 import '../widgets/product_search_field.dart';
+import '../widgets/section_header.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,12 +30,30 @@ class _HomeScreenState extends State<HomeScreen> {
               ProductSearchField(),
               SizedBox(height: 16,),
               HomeCarouselWidgets(),
+              SectionHeader(title: 'Categories', onTapSeeAll: (){},),
+              _buildCategoryList()
 
             ],
           ),
         ),
       ),
     );
+  }
+
+  SizedBox _buildCategoryList() {
+    return SizedBox(
+              height: 90,
+              child: ListView.separated(
+                  itemCount: 10,
+                  scrollDirection:Axis.horizontal,
+                  itemBuilder: (context, index){
+                return CategoryCard();
+              },
+                  separatorBuilder: (context, index){
+                    return SizedBox(width: 8,);
+                  }
+              ),
+            );
   }
 
 
@@ -60,3 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+
+
