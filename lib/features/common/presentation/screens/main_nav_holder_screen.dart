@@ -1,4 +1,5 @@
 import 'package:crafty_bey/app/app_colors.dart';
+import 'package:crafty_bey/features/category/presentation/screens/category_list_screen.dart';
 import 'package:crafty_bey/features/common/presentation/provider/main_nav_container_provider.dart';
 import 'package:crafty_bey/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
 
   final List<Widget> _screens = [
     HomeScreen(),
-    HomeScreen(),
+    CategoryListScreen(),
     HomeScreen(),
     HomeScreen(),
   ];
