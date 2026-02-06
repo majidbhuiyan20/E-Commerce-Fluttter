@@ -1,3 +1,4 @@
+import 'package:crafty_bey/features/home/presentation/widgets/home_carousel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -23,7 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               SizedBox(height: 16,),
-              ProductSearchField()
+              ProductSearchField(),
+              SizedBox(height: 16,),
+              HomeCarouselWidgets(),
 
             ],
           ),
