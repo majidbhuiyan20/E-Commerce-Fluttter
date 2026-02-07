@@ -40,8 +40,50 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
               _buildCategoryList(),
+
+              //============Popular section bellow===============
               SectionHeader(title: 'Popular', onTapSeeAll: () {}),
-              PopularCard(),
+              SizedBox(
+                height: 180,
+                child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: .horizontal,
+                    itemBuilder: (context, index){
+                  return Padding(
+                    padding:  EdgeInsets.only(right: 8),
+                    child: PopularCard(),
+                  );
+                }),
+              ),
+              //============Special section bellow===============
+              SectionHeader(title: 'Special', onTapSeeAll: () {}),
+              SizedBox(
+                height: 180,
+                child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: .horizontal,
+                    itemBuilder: (context, index){
+                  return Padding(
+                    padding:  EdgeInsets.only(right: 8),
+                    child: PopularCard(),
+                  );
+                }),
+              ),
+              //============New section bellow===============
+              SectionHeader(title: 'New', onTapSeeAll: () {}),
+              SizedBox(
+                height: 180,
+                child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: .horizontal,
+                    itemBuilder: (context, index){
+                  return Padding(
+                    padding:  EdgeInsets.only(right: 8),
+                    child: PopularCard(),
+                  );
+                }),
+              ),
+
             ],
           ),
         ),
