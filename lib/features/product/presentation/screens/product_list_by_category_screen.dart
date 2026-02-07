@@ -26,7 +26,7 @@ class _ProductListByCategoryScreenState
             crossAxisSpacing: 8,
           ),
           itemBuilder: (context, index) {
-            return FittedBox(child: PopularCard());
+            return FittedBox(child: ProductCard());
           },
         ),
       ),

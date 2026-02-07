@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index){
                   return Padding(
                     padding:  EdgeInsets.only(right: 8),
-                    child: PopularCard(),
+                    child: ProductCard(),
                   );
                 }),
               ),
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index){
                   return Padding(
                     padding:  EdgeInsets.only(right: 8),
-                    child: PopularCard(),
+                    child: ProductCard(),
                   );
                 }),
               ),
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index){
                   return Padding(
                     padding:  EdgeInsets.only(right: 8),
-                    child: PopularCard(),
+                    child: ProductCard(),
                   );
                 }),
               ),
@@ -126,8 +126,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class PopularCard extends StatelessWidget {
-  const PopularCard({
+class ProductCard extends StatelessWidget {
+  const ProductCard({
     super.key,
   });
 
