@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'package:logger/logger.dart';
-part '../models/newwork_response.dart';
+part '../models/network_response.dart';
 
 class NetworkCaller {
    final Logger _logger = Logger();

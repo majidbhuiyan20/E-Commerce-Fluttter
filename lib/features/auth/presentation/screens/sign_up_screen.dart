@@ -8,6 +8,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/presentation/widgets/center_progress_indicator.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -130,7 +132,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       builder: (context, signUpProvider, child) {
                         return Visibility(
                           visible: signUpProvider.isSignUpInProgress == false,
-                          replacement: CircularProgressIndicator(),
+                          replacement: CenterProgressIndicator(),
                           child: FilledButton(
                             onPressed: _onTapSignUpButton,
                             child: Text("Sign Up"),
@@ -168,7 +170,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _onTapSignUpButton() {
-    if (_formKey.currentState!.validate()){
+    if (_formKey.currentState!.validate()) {
       _signUp();
     }
   }
@@ -186,10 +188,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
 
     if (isSuccess) {
+      Navigator.pushNamed(context, VerifyOtpScreen.routeName, arguments: _emailTEController.text.trim());
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text("Sign Up Success")));
-      Navigator.pushNamed(context, VerifyOtpScreen.routeName);
 
     } else {
       ScaffoldMessenger.of(
@@ -214,3 +216,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 }
+
+

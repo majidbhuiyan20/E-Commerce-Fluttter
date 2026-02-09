@@ -20,7 +20,8 @@ class AppRoutes {
       widget = SignInScreen();
     }
     else if(settings.name == VerifyOtpScreen.routeName){
-      widget = VerifyOtpScreen();
+      final email = settings.arguments as String;
+      widget = VerifyOtpScreen(email: email,);
     }
     else if(settings.name == MainNavHolderScreen.routeName){
       widget = MainNavHolderScreen();
