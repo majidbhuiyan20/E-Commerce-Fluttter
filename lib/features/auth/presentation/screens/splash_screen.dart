@@ -1,3 +1,4 @@
+import 'package:crafty_bey/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:crafty_bey/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bey/features/auth/presentation/widgts/app_logo.dart';
 import 'package:crafty_bey/features/common/presentation/widgets/language_selector.dart';
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void _moveToNextScreen(){
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
-      Navigator.pushReplacementNamed(context, MainNavHolderScreen.routeName);
+      Navigator.pushReplacementNamed(context, SignInScreen.routeName);
     });
   }
 
