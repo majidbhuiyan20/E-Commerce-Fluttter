@@ -184,11 +184,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
         city: _cityTEController.text.trim(),
       ),
     );
-    Navigator.pushNamed(context, VerifyOtpScreen.routeName);
+
     if (isSuccess) {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text("Sign Up Success")));
+      Navigator.pushNamed(context, VerifyOtpScreen.routeName);
 
     } else {
       ScaffoldMessenger.of(
