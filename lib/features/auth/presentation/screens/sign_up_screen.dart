@@ -179,7 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         firstName: _firstNameTEController.text.trim(),
         lastName: _lastNameTEController.text.trim(),
         email: _emailTEController.text.trim(),
-        password: _emailTEController.text.trim(),
+        password: _passwordTEController.text.trim(),
         phone: _phoneTEController.text.trim(),
         city: _cityTEController.text.trim(),
       ),

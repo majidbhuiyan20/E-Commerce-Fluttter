@@ -66,15 +66,16 @@ class NetworkCaller {
           uri,
           headers: headers ?? {
             'content-type': 'application/json',
-
           },
+
+
           body: jsonEncode(body));
 
       _logResponse(url, response);
 
       final int statusCode = response.statusCode;
 
-      if (statusCode == 200) {
+      if (statusCode == 200 || statusCode == 201){
         final decodedData = json.decode(response.body);
         return NetworkResponse(
           isSuccess: true,
