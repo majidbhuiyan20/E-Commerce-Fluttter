@@ -2,16 +2,20 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'package:logger/logger.dart';
+part '../models/newwork_response.dart';
 
-class ApiCaller {
-  static final Logger _logger = Logger();
-  static Future<ApiResponse> getRequest({required String url}) async {
+class NetworkCaller {
+   final Logger _logger = Logger();
+   final VoidCallback onUnauthorised;
+   final Map<String, String>? headers;
+
+   NetworkCaller({ required this.onUnauthorised, this.headers});
+
+   Future<NetworkResponse> getRequest({required String url}) async {
     try {
       Uri uri = Uri.parse(url);
       _logRequest(url);
-      Response response = await get(uri, headers: {
-
-      });
+      Response response = await get(uri, headers: headers);
 
       _logResponse(url, response);
 
@@ -19,15 +23,15 @@ class ApiCaller {
 
       if (statusCode == 200 || statusCode == 201) {
         final decodedData = json.decode(response.body);
-        return ApiResponse(
+        return NetworkResponse(
           isSuccess: true,
           responseCode: statusCode,
           responseData: decodedData,
         );
       }
       else if(statusCode == 401){
-        await _moveToLogin();
-        return ApiResponse(
+        onUnauthorised();
+        return NetworkResponse(
           isSuccess: false,
           responseCode: statusCode,
           responseData: null,
@@ -35,14 +39,14 @@ class ApiCaller {
       }
       else {
         final decodedData = json.decode(response.body);
-        return ApiResponse(
+        return NetworkResponse(
           isSuccess: false,
           responseCode: statusCode,
           responseData: decodedData,
         );
       }
     } on Exception catch (e) {
-      return ApiResponse(
+      return NetworkResponse(
         isSuccess: false,
         responseCode: -1,
         responseData: null,
@@ -51,7 +55,7 @@ class ApiCaller {
     }
   }
 
-  static Future<ApiResponse> postRequest({
+   Future<NetworkResponse> postRequest({
     required String url,
     Map<String, dynamic>? body,
   }) async {
@@ -60,7 +64,7 @@ class ApiCaller {
       _logRequest(url, body: body);
       Response response = await post(
           uri,
-          headers: {
+          headers: headers ?? {
             'content-type': 'application/json',
 
           },
@@ -72,15 +76,15 @@ class ApiCaller {
 
       if (statusCode == 200) {
         final decodedData = json.decode(response.body);
-        return ApiResponse(
+        return NetworkResponse(
           isSuccess: true,
           responseCode: statusCode,
           responseData: decodedData,
         );
       }
       else if(statusCode == 401){
-        await _moveToLogin();
-        return ApiResponse(
+        onUnauthorised();
+        return NetworkResponse(
           isSuccess: false,
           responseCode: statusCode,
           responseData: null,
@@ -88,14 +92,14 @@ class ApiCaller {
       }//
       else {
         final decodedData = json.decode(response.body);
-        return ApiResponse(
+        return NetworkResponse(
           isSuccess: false,
           responseCode: statusCode,
           responseData: decodedData,
         );
       }
     } on Exception catch (e) {
-      return ApiResponse(
+      return NetworkResponse(
         isSuccess: false,
         responseCode: -1,
         responseData: null,
@@ -104,39 +108,18 @@ class ApiCaller {
     }
   }
 
-  static void _logRequest(String url, {Map<String, dynamic>? body}) {
+   void _logRequest(String url, {Map<String, dynamic>? body}) {
     _logger.i(
       'URL => $url\n'
-      'Request Body => $body',
+          'Request Body => $body',
     );
   }
 
-  static void _logResponse(String url, Response response) {
+   void _logResponse(String url, Response response) {
     _logger.i(
       'URL => $url\n'
-      'Status Code => ${response.statusCode}\n'
-      'Body => ${response.body}',
+          'Status Code => ${response.statusCode}\n'
+          'Body => ${response.body}',
     );
   }
-
-  static Future<void> _moveToLogin() async{
-    // await AuthController.clearUserData();
-    // Navigator.pushNamedAndRemoveUntil(TaskManagerApp.navigator.currentContext!, LoginScreen.name, (predicate)=> false);
-    //
-    //
-  }
-}
-
-class ApiResponse {
-  final bool isSuccess;
-  final int responseCode;
-  final dynamic responseData;
-  final String? errorMessage;
-
-  ApiResponse({
-    required this.isSuccess,
-    required this.responseCode,
-    required this.responseData,
-    this.errorMessage = "Something went wrong",
-  });
 }
