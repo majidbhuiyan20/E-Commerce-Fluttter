@@ -1,4 +1,5 @@
 import 'package:crafty_bey/features/common/presentation/screens/main_nav_holder_screen.dart';
+import 'package:crafty_bey/features/product/presentation/screens/product_details_screen.dart';
 import 'package:crafty_bey/features/product/presentation/screens/product_list_by_category_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,9 @@ class AppRoutes {
     }
     else if(settings.name == ProductListByCategoryScreen.routeName){
       widget = ProductListByCategoryScreen();
+    }
+    else if(settings.name == ProductDetailsScreen.routeName){
+      widget = ProductDetailsScreen();
     }
 
     return MaterialPageRoute(builder: (ctx)=> widget);

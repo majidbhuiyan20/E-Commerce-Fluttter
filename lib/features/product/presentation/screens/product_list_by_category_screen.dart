@@ -1,6 +1,8 @@
 import 'package:crafty_bey/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../../home/presentation/widgets/product_card.dart';
+
 class ProductListByCategoryScreen extends StatefulWidget {
   const ProductListByCategoryScreen({super.key});
   static const String routeName = "/product-list-by-category";
