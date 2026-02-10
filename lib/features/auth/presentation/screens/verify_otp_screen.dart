@@ -128,16 +128,12 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   }
 
   Future<void> _verifyOtp() async {
-    if (!mounted) return;
-    VerifyOtpParams params = VerifyOtpParams(
-      email: widget.email,
-      otp: _otpTEController.text,
+    final bool isSuccess = await _verifyOtpProvider.verifyOtp(
+      VerifyOtpParams(
+        email: widget.email,
+        otp: _otpTEController.text.trim(),
+      ),
     );
-
-    final bool isSuccess = await _verifyOtpProvider.verifyOtp(params);
-
-
-
     if (isSuccess) {
       showSnackBarMessage(
         context,
