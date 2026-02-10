@@ -5,8 +5,17 @@ import 'package:logger/logger.dart';
 part '../models/network_response.dart';
 
 class NetworkCaller {
-   final Logger _logger = Logger();
-   final VoidCallback onUnauthorised;
+  final Logger _logger = Logger(
+    printer: PrettyPrinter(
+      methodCount: 0,
+      lineLength: 100,
+      colors: false,
+      printEmojis: true,
+      printTime: true,
+    ),
+  );
+
+  final VoidCallback onUnauthorised;
    final Map<String, String>? headers;
 
    NetworkCaller({ required this.onUnauthorised, this.headers});
