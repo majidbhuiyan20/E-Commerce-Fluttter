@@ -19,7 +19,7 @@ class VerifyOtpProvider extends ChangeNotifier {
     notifyListeners();
 
     final NetworkResponse response = await getNetworkCaller().postRequest(
-      url: Urls.signUpUrl,
+      url: Urls.verifyOtp,
       body:params.toJson(),
     );
     if(response.isSuccess){
