@@ -4,6 +4,7 @@ import 'package:crafty_bey/features/auth/presentation/providers/sign_up_provider
 import 'package:crafty_bey/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:crafty_bey/features/auth/presentation/screens/verify_otp_screen.dart';
 import 'package:crafty_bey/features/auth/presentation/widgts/app_logo.dart';
+import 'package:crafty_bey/features/common/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -189,14 +190,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     if (isSuccess) {
       Navigator.pushNamed(context, VerifyOtpScreen.routeName, arguments: _emailTEController.text.trim());
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Sign Up Success")));
+     showSnackBarMessage(context, "OTP Sent Successfully", backgroundColor: Colors.green);
 
     } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(_signUpProvider.errorMessage!)));
+      showSnackBarMessage(context, _signUpProvider.errorMessage!, backgroundColor: Colors.red);
     }
   }
 
