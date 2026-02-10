@@ -128,30 +128,38 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   }
 
   Future<void> _verifyOtp() async {
+    if (!mounted) return;
     VerifyOtpParams params = VerifyOtpParams(
       email: widget.email,
       otp: _otpTEController.text,
     );
+
     final bool isSuccess = await _verifyOtpProvider.verifyOtp(params);
+
+
+
     if (isSuccess) {
-      Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName,(predicate) => false);
       showSnackBarMessage(
         context,
         "OTP Verified Successfully",
         backgroundColor: Colors.green,
       );
+
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        SignInScreen.routeName,
+            (route) => false,
+      );
     } else {
       showSnackBarMessage(
         context,
-        _verifyOtpProvider.errorMessage!,
+        _verifyOtpProvider.errorMessage ?? "Something went wrong",
         backgroundColor: Colors.red,
       );
     }
+
   }
 
-  @override
-  void dispose() {
-    _otpTEController.dispose();
-    super.dispose();
-  }
+
+
 }
