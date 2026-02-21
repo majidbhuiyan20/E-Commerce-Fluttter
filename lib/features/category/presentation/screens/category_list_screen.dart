@@ -1,4 +1,6 @@
+import 'package:crafty_bey/features/category/presentation/provider/category_list_provider.dart';
 import 'package:crafty_bey/features/common/presentation/provider/main_nav_container_provider.dart';
+import 'package:crafty_bey/features/common/presentation/widgets/center_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +15,17 @@ class CategoryListScreen extends StatefulWidget {
 
 class _CategoryListScreenState extends State<CategoryListScreen> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp){
+      _fetchCategoryList();
+    });
+  }
+  Future<void>_fetchCategoryList()async{
+    context.read<CategoryListProvider>().fetchCategoryList();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PopScope(
       onPopInvokedWithResult: (_,__){
@@ -25,20 +38,28 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
             context.read<MainNavContainerProvider>().changeToHome();
           }, icon: Icon(Icons.arrow_back_ios)),
           title: Text("Categories",),),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-              childAspectRatio: 1,
-            ),
-            itemBuilder: (context, index) {
-              return CategoryCard();
-            },
-            itemCount: 80,
-          ),
+        body: Consumer<CategoryListProvider>(
+          builder: (context, categoryListProvider, child) {
+            if(categoryListProvider.initialLoading){
+              return CenterProgressIndicator();
+            }
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: GridView.builder(
+
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                  childAspectRatio: 1,
+                ),
+                itemBuilder: (context, index) {
+                  return CategoryCard(categoryModel: categoryListProvider.CategoryList[index],);
+                },
+                itemCount: categoryListProvider.CategoryList.length,
+              ),
+            );
+          }
         )
 
 
