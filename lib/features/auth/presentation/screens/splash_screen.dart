@@ -2,11 +2,7 @@ import 'package:crafty_bey/features/auth/presentation/providers/auth_controller.
 import 'package:crafty_bey/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:crafty_bey/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bey/features/auth/presentation/widgts/app_logo.dart';
-import 'package:crafty_bey/features/common/presentation/widgets/language_selector.dart';
-import 'package:crafty_bey/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../l10n/app_localizations.dart';
 import '../../../common/presentation/screens/main_nav_holder_screen.dart';
 
 class SplashScreen extends StatefulWidget {
